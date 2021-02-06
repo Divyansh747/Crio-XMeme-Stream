@@ -20,11 +20,11 @@ public class XmemeEntity {
 	@Column(unique = true, nullable = false)
 	private String name;
 
-	@NaturalId
+	@NaturalId(mutable=true)
 	@Column(unique = true, nullable = false)
 	private String url;
 
-	@NaturalId
+	@NaturalId(mutable=true)
 	@Column(unique = true, nullable = false)
 	private String caption;
 

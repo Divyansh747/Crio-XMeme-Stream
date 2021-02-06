@@ -24,9 +24,9 @@ public class XmemeService {
 	public Optional<XmemeEntity> createMeme(XmemeRequest xmemeRequest) {
 
 		if (xmemeRepository.existsByName(xmemeRequest.getName())) {
-			throw new XmemeException("Owner Name already exists!");
+			throw new XmemeException("Duplicate Owner Name encounter!");
 		} else if (xmemeRepository.existsByUrl(xmemeRequest.getUrl())) {
-			throw new XmemeException("Meme URL already exists!");
+			throw new XmemeException("Duplicate  Meme URL encounter!");
 		} else if (xmemeRepository.existsByCaption(xmemeRequest.getCaption())) {
 			throw new XmemeException("Duplicate Caption encounter!");
 		}
@@ -40,10 +40,11 @@ public class XmemeService {
 	}
 
 	public Optional<XmemeEntity> createMeme(XmemeEntity xmemeRequest) {
+
 		if (xmemeRepository.existsByName(xmemeRequest.getName())) {
-			throw new XmemeException("Owner Name already exists!");
+			throw new XmemeException("Duplicate Owner Name encounter!");
 		} else if (xmemeRepository.existsByUrl(xmemeRequest.getUrl())) {
-			throw new XmemeException("Meme URL already exists!");
+			throw new XmemeException("Duplicate  Meme URL encounter!");
 		} else if (xmemeRepository.existsByCaption(xmemeRequest.getCaption())) {
 			throw new XmemeException("Duplicate Caption encounter!");
 		}
@@ -64,6 +65,5 @@ public class XmemeService {
 	public List<XmemeEntity> findTop100ByOrderByIdDesc(){
 		return xmemeRepository.findTop100ByOrderByIdDesc();
 	}
-
 
 }
