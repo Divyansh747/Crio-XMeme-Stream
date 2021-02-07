@@ -26,7 +26,7 @@ public class RestHomeController {
 	private XmemeService xmemeService;
 
 	@RequestMapping("/memes/{id}")
-	public ResponseEntity<?> getByMeme(@PathVariable(value="id") Long id){
+	public ResponseEntity<?> getByMeme(@PathVariable(value="id") String id){
 		return ResponseEntity.ok(xmemeService.findById(id));
 	}
 
@@ -35,23 +35,13 @@ public class RestHomeController {
 		return ResponseEntity.ok(xmemeService.findTop100ByOrderByIdDesc());
 	}
 
-	@PostMapping("/memes")
+	@PostMapping("/memes") 
 	public ResponseEntity<?> createMeme(@Valid @RequestBody XmemeRequest xmemeRequest) {
 		return ResponseEntity.ok(xmemeService.createMeme(xmemeRequest));
 	}
 
 	@PatchMapping("/memes/{id}")
-	public XmemeEntity xmemeUpdate(@PathVariable("id") Long id, @RequestBody @Valid XmemeEntity patchMeme) {
-
-		XmemeEntity xmemeEntity = xmemeService.findById(id);
-
-		if(patchMeme.getUrl() != null) {
-			xmemeEntity.setUrl(patchMeme.getUrl());
-		}
-		if(patchMeme.getCaption() != null) {
-			xmemeEntity.setCaption(patchMeme.getCaption());
-		}
-
-		return xmemeRepository.save(xmemeEntity);
+	public ResponseEntity<?> xmemeUpdate(@PathVariable("id") String id, @RequestBody @Valid XmemeEntity patchMeme) {
+		return ResponseEntity.ok(xmemeService.updateMeme(id, patchMeme));
 	}
 }

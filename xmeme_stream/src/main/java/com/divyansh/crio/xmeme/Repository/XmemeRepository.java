@@ -15,7 +15,7 @@ public interface XmemeRepository extends JpaRepository<XmemeEntity, Long> {
 
 	Optional<XmemeEntity> findByCaption(String caption);
 
-	Optional<XmemeEntity> findById(Long id);
+	Optional<XmemeEntity> findById(String id);
 
 	List<XmemeEntity> findTop100ByOrderByIdDesc(); 
 
