@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.divyansh.crio.xmeme.Entity.XmemeEntity;
 import com.divyansh.crio.xmeme.Service.XmemeService;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 @Controller
+@ApiIgnore
 public class HomeController {
 
 	private XmemeService xmemeService;
@@ -40,14 +43,14 @@ public class HomeController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/memes/{id}/edit")
-	public String editForm(@PathVariable(value="id") String id, Model model) {
+	public String editFormByMemeId(@PathVariable(value="id") String id, Model model) {
 		model.addAttribute("editform", new XmemeEntity());
 		return "editMeme";
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/memes/{id}/edit", 
 			consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public String xmemePatch(@PathVariable("id") String id, @ModelAttribute @RequestBody XmemeEntity patchMeme) {
+	public String xmemePatchByMemeId(@PathVariable("id") String id, @ModelAttribute @RequestBody XmemeEntity patchMeme) {
 		xmemeService.updateFormMeme(id, patchMeme);
 		return "redirect:/";
 	}

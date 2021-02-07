@@ -24,6 +24,5 @@ public class XmemeResponseRequest {
 	public String toString() {
 		return "XmemeResponseRequest [id=" + id + "]";
 	}
-
-
+	
 }

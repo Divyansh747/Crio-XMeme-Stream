@@ -10,6 +10,7 @@ import com.divyansh.crio.xmeme.Entity.XmemeEntity;
 import com.divyansh.crio.xmeme.Exception.NotFoundException;
 import com.divyansh.crio.xmeme.Exception.XmemeException;
 import com.divyansh.crio.xmeme.Repository.XmemeRepository;
+import com.divyansh.crio.xmeme.Request.XmemePatchRequest;
 import com.divyansh.crio.xmeme.Request.XmemeRequest;
 import com.divyansh.crio.xmeme.Request.XmemeResponseRequest;
 
@@ -71,7 +72,7 @@ public class XmemeService {
 		return xmemeRepository.findTop100ByOrderByIdDesc();
 	}
 
-	public Optional<XmemeEntity> updateMeme(String id, XmemeEntity patchMeme) {
+	public Optional<XmemeEntity> updateMeme(String id, XmemePatchRequest patchMeme) {
 
 		XmemeEntity xmemeEntity = findById(id);
 
