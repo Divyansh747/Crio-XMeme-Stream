@@ -3,53 +3,166 @@
 <head>
 <title>XMEME Stream</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
+
+<style>
+.modal-content {
+	color: rgb(255, 254, 254);
+	background-color: #34495e;
+	opacity: .85;
+}
+
+input {
+	width: 50%;
+	border-radius: 5px;
+}
+
+textarea {
+	width: 50%;
+	border-radius: 5px;
+}
+
+.btn {
+	width: 25%;
+}
+
+@media ( min-width : 200px) {
+	body {
+		background: url(/img/doge2.jpg) no-repeat center center fixed;
+		background-size: cover;
+	}
+	.modal-content {
+		color: rgb(255, 254, 254);
+		background-color: black;
+		opacity: .75;
+	}
+	input {
+		width: 95%;
+		border-radius: 5px;
+	}
+	textarea {
+		width: 95%;
+		border-radius: 5px;
+	}
+	.btn {
+		width: 95%;
+		margin-bottom: 10px;
+	}
+}
+
+@media ( min-width : 400px) {
+	body {
+		background: url(/img/lol.jpg) no-repeat center center fixed;
+		background-size: cover;
+	}
+	.modal-content {
+		color: rgb(255, 254, 254);
+		background-color: black;
+		opacity: .85;
+	}
+	input {
+		width: 95%;
+		border-radius: 5px;
+	}
+	textarea {
+		width: 95%;
+		border-radius: 5px;
+	}
+	.btn {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+}
+
+@media ( min-width : 500px) {
+	body {
+		background: url(/img/doge2.jpg) no-repeat center center fixed;
+		background-size: cover;
+	}
+	.modal-content {
+		color: rgb(255, 254, 254);
+		background-color: #34495e;
+		opacity: .85;
+	}
+	input {
+		width: 50%;
+		border-radius: 5px;
+	}
+	textarea {
+		width: 50%;
+		border-radius: 5px;
+	}
+	.btn {
+		width: 25%;
+	}
+}
+
+@media ( min-width : 992px) and (max-width: 1500px) {
+	body {
+		background: url(/img/doge1.jpg) no-repeat fixed;
+		background-size: cover;
+	}
+}
+</style>
+
 </head>
 <body>
 	<nav
-		class="navbar navbar-expand-lg navbar-dark bg-dark shadow p-3 mb-5">
-		<a class="navbar-brand" href="#"> <b>XMEME Stream</b>
-		</a>
-
+		class="navbar navbar-expand-lg navbar-dark bg-dark shadow p-3 mb-4">
+		<a class="navbar-brand" href="#"> <b>XMEME Stream</b></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target=".navbar-collapse" aria-controls=".navbar-collapse"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 		<div class="collapse navbar-collapse">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="/">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link" href="/">Home<span
+						class="sr-only">(current)</span></a></li>
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link"
+					href="/swagger-ui.html">Swagger</a></li>
 			</ul>
 		</div>
 	</nav>
-	<div class="container">
-		<div class="display-4 jumbotron shadow p-5 mb-5 bg-white rounded">
-			<center>
-				<h1>
-					<b>Edit Your XMEME</b>
-				</h1>
-				<hr>
-				<form action="#" th:action="@{'/memes/' + ${id} + '/edit'}"
-					th:object="${editform}" method="post">
-					<div class="form-group">
-						<p class="lead">
-							<label>URL: </label><br> <input type="text"
-								th:field="*{url}" method="patch" />
-						</p>
-						<p class="lead">
-							<label>Caption: </label><br> <input type="text"
-								th:field="*{caption}" method="patch"/>
-						</p>
-						<p class="lead">
-							<input type="submit" class="btn btn-primary" value="Submit" /> 
-							<input type="reset" class="btn btn-primary" value="Reset" />
-						</p>
-					</div>
-				</form>
-			</center>
+	<div class="container p-1 text-center">
+		<div class="display-4 modal-content shadow p-5 mb-5 rounded">
+
+			<h1>
+				<b>Edit Your XMEME</b>
+			</h1>
 			<hr>
-			<div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light"
-				style="max-width: 1000px; max-height: 500px;"></div>
+			<form action="#" th:action="@{'/memes/' + ${id} + '/edit'}"
+				th:object="${editform}" method="post">
+				<div class="form-group">
+					<p class="lead">
+						<label>URL: </label><br> <input type="text" th:field="*{url}" />
+					</p>
+					<p class="lead">
+						<label>Caption: </label><br>
+						<textarea th:field="*{caption}" />
+					</p>
+					<p class="lead">
+						<input type="submit" class="btn btn-primary" value="Submit" /> <input
+							type="reset" class="btn btn-primary" value="Reset" />
+					</p>
+					<p class="lead">
+						<a th:href="@{'/'}" class="btn btn-success">Home</a>
+					</p>
+				</div>
+			</form>
+
 		</div>
 	</div>
 
