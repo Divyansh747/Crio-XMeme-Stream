@@ -32,7 +32,7 @@ public class RestHomeController {
 
 	@GetMapping("/memes/{id}")
     @ApiOperation(value = "getByMemeId method to find Meme by ID")
-	public ResponseEntity<?> getByMemeId(@PathVariable(value="id") String id){
+	public ResponseEntity<?> getByMemeId(@PathVariable(value="id") Long id){
 		return ResponseEntity.ok(xmemeService.findById(id));
 	}
 
@@ -51,7 +51,7 @@ public class RestHomeController {
 	@PatchMapping("/memes/{id}")
 	@ApiOperation(value = "updateByMemeId method to patch Meme by ID")
 	public ResponseEntity<?> updateByMemeId(
-			@ApiParam("ID of Meme to patch it. Cannot be empty.") @PathVariable("id") String id, 
+			@ApiParam("ID of Meme to patch it. Cannot be empty.") @PathVariable("id") Long id, 
 			@RequestBody @Valid XmemePatchRequest patchMeme) {
 		return ResponseEntity.ok(xmemeService.updateMeme(id, patchMeme));
 	}

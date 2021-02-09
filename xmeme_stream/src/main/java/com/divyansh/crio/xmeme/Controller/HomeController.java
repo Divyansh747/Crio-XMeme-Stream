@@ -43,14 +43,14 @@ public class HomeController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/memes/{id}/edit")
-	public String editFormByMemeId(@PathVariable(value="id") String id, Model model) {
+	public String editFormByMemeId(@PathVariable(value="id") Long id, Model model) {
 		model.addAttribute("editform", new XmemeEntity());
 		return "editMeme";
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/memes/{id}/edit", 
 			consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public String xmemePatchByMemeId(@PathVariable("id") String id, @ModelAttribute @RequestBody XmemeEntity patchMeme) {
+	public String xmemePatchByMemeId(@PathVariable("id") Long id, @ModelAttribute @RequestBody XmemeEntity patchMeme) {
 		xmemeService.updateFormMeme(id, patchMeme);
 		return "redirect:/";
 	}

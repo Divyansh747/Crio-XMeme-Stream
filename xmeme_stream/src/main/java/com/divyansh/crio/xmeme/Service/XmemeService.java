@@ -63,7 +63,7 @@ public class XmemeService {
 		return Optional.ofNullable(xmemeEntity);
 	}
 
-	public XmemeEntity findById(String id) {
+	public XmemeEntity findById(Long id) {
 		XmemeEntity xmemeEntity = xmemeRepository.findById(id).orElseThrow(() -> new NotFoundException("ID Not Found!"));
 		return xmemeEntity;
 	}
@@ -72,7 +72,7 @@ public class XmemeService {
 		return xmemeRepository.findTop100ByOrderByIdDesc();
 	}
 
-	public Optional<XmemeEntity> updateMeme(String id, XmemePatchRequest patchMeme) {
+	public Optional<XmemeEntity> updateMeme(Long id, XmemePatchRequest patchMeme) {
 
 		XmemeEntity xmemeEntity = findById(id);
 
@@ -89,7 +89,7 @@ public class XmemeService {
 		return Optional.ofNullable(xmemeRepository.save(xmemeEntity));
 	}
 
-	public Optional<XmemeEntity> updateFormMeme(String id, XmemeEntity patchMeme) {
+	public Optional<XmemeEntity> updateFormMeme(Long id, XmemeEntity patchMeme) {
 
 		XmemeEntity xmemeEntity = findById(id);
 
