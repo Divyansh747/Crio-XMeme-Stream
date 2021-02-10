@@ -19,14 +19,34 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * XMEME STREAM CRIO Winter of Doing Project
+ * @author Divyansh Rahangdale
+ * 
+ * Enabling Swagger2 to generate the REST API documents for RESTful web services
+ * 
+ */
 @SpringBootApplication
 @EnableSwagger2
 public class XmemeStreamApplication {
 
+	/**
+	 * Launches the Application
+	 * 
+	 * @param args - Application startup arguments
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(XmemeStreamApplication.class, args);
 	}
 
+	/**
+	 * Docket bean select() method return an instance of ApiSelectorBuilder,
+	 * which provides a way to control the endpoints
+	 * 
+	 * .globalResponseMessage calling RequestMethod of GET POST PATCH response
+	 * 
+	 * @return - Docket swaggerConfiguration settings
+	 */
 	@Bean
 	public Docket swaggerConfiguration() {
 		return new Docket(DocumentationType.SWAGGER_2)
@@ -40,6 +60,10 @@ public class XmemeStreamApplication {
 				.apiInfo(apiInfo());
 	}
 
+	/**
+	 * 
+	 * @return - ApiInformation Display details
+	 */
 	private ApiInfo apiInfo() {
 		return new ApiInfo(
 				"XMEME STREAM REST API", 
@@ -52,6 +76,11 @@ public class XmemeStreamApplication {
 				Collections.emptyList());	
 	}
 
+	/**
+	 * SWAGGER GET Method Response Message method
+	 * 
+	 * @return - Response Message Error code 500 403 404
+	 */
 	private List<ResponseMessage> getCustomizedGetResponseMessages(){
 		List<ResponseMessage> responseMessages = new ArrayList<>();
 		responseMessages.add(new ResponseMessageBuilder().code(500).message("Internal Server Error!").responseModel(new ModelRef("Error")).build());
@@ -61,6 +90,11 @@ public class XmemeStreamApplication {
 		return responseMessages;
 	}
 
+	/**
+	 * SWAGGER POST Method Response Message method
+	 * 
+	 * @return - Response Message Error code 403 404 409 500
+	 */
 	private List<ResponseMessage> getCustomizedPostResponseMessages(){
 		List<ResponseMessage> responseMessages = new ArrayList<>();
 		responseMessages.add(new ResponseMessageBuilder().code(500).message("Internal Server Error!").responseModel(new ModelRef("Error")).build());
@@ -71,6 +105,11 @@ public class XmemeStreamApplication {
 		return responseMessages;
 	}
 
+	/**
+	 * SWAGGER PATCH Method Response Message method
+	 * 
+	 * @return - Response Message Error code 403 404 409 500
+	 */
 	private List<ResponseMessage> getCustomizedPatchResponseMessages(){
 		List<ResponseMessage> responseMessages = new ArrayList<>();
 		responseMessages.add(new ResponseMessageBuilder().code(500).message("Internal Server Error!").responseModel(new ModelRef("Error")).build());
