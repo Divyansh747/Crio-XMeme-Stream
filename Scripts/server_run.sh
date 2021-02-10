@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd xmeme_stream
+cd ../xmeme_stream
 
 mvn package -DskipTests
 docker build -t xmeme-divyansh747 .
