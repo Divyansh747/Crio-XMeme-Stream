@@ -3,5 +3,5 @@
 cd ../xmeme_stream
 
 mvn package -DskipTests
-docker build -t xmeme-divyansh747 .
-docker-compose up -d
+sudo docker build -t xmeme-divyansh747 .
+sudo docker-compose up -d
