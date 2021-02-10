@@ -4,6 +4,7 @@ services:
 
   xmeme-postgres:
     image: postgres
+    #network_mode: "host"
     restart: always
     environment:
       - POSTGRES_PASSWORD=xmeme
@@ -14,6 +15,7 @@ services:
 
   xmeme-app:
     image: xmeme-divyansh747
+    #network_mode: "host"
     restart: on-failure
     depends_on:
       - xmeme-postgres

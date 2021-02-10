@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import springfox.documentation.builders.RequestHandlerSelectors;
