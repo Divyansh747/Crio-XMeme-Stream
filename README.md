@@ -2,6 +2,19 @@
 # Crio-XMeme-Stream
 CRIO XMEME STREAM PROJECT
 
+# Technology Used
+Frontend         => HTML/CSS, Bootstrap, Thymeleaf
+Database         => Postgresql
+API              => JAVA REST API
+SWAGGER          => API DOCUMENTATION
+Container Engine => Docker
+
+# About Repository Structure
+Scripts/                    => contains all required scripts for deployment
+xmeme_stream                => contains xmeme stream project source code
+xmeme_stream/Dockerfile     => Dockerfile for Spring Boot project
+xmeme_stream/docker-compose => Docker compose file for deploying Postgresql and Xmeme Stream App with database connectivity
+
 # How To Setup (UBUNTU 18.04 LINUX X86)
 1) git clone repository
 2) cd Crio-Xmeme-Stream
