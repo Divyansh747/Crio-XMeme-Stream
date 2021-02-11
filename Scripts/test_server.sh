@@ -19,7 +19,7 @@ sudo ./install.sh
 
 chmod +x server_run.sh
 
-./server_run.sh &
+./server_run.sh
 
 
 # 3. Add a sleep timer to sleep.sh depending upon how long you want to sleep so that the server is ready.
